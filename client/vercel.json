@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://avendano-pictures-a5k4.vercel.app/api/$1"
+    }
+  ]
+}
