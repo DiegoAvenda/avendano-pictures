@@ -1,0 +1,37 @@
+{
+  "name": "video-app-client",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@tanstack/react-query": "^5.28.0",
+    "axios": "^1.7.2",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "zustand": "^4.5.2",
+    "zod": "^3.23.8",
+    "react-hook-form": "^7.53.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.5.2",
+    "vite": "^5.2.12",
+    "tailwindcss": "^3.4.3",
+    "postcss": "^8.4.38",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^9.6.0",
+    "eslint-plugin-react": "^7.35.2",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.2"
+  }
+}
