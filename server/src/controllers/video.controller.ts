@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { Video, IVideo } from '../models/Video';
-import { CreateVideoInput, UpdateVideoInput } from '../schemas/video.schema';
+import { Video } from '../models/Video.js';
+import { CreateVideoInput, UpdateVideoInput } from '../schemas/video.schema.js';
 
 // Get feed of videos (paginated optional)
-export const getFeed = async (req: Request, res: Response) => {
+export const getFeed = async (_req: Request, res: Response) => {
   try {
     const videos = await Video.find().sort({ createdAt: -1 }).limit(20);
     res.status(200).json({ success: true, data: videos });

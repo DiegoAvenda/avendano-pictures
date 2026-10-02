@@ -1,11 +1,14 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import { User, IUser } from '../models/User';
-import { RegisterInput, LoginInput } from '../schemas/auth.schema';
+import jwt, { SignOptions } from 'jsonwebtoken';
+import { User, IUser } from '../models/User.js';
+import { RegisterInput, LoginInput } from '../schemas/auth.schema.js';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
-const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
+// @types/jsonwebtoken types `expiresIn` as `number | ms.StringValue`, so a plain
+// `string` from process.env must be narrowed to that union.
+const JWT_EXPIRES_IN = (process.env.JWT_EXPIRES_IN ||
+  '7d') as SignOptions['expiresIn'];
 
 // Helper to generate JWT and set as HttpOnly cookie
 const generateToken = (userId: string) => {
@@ -55,7 +58,7 @@ export const login = async (req: Request<{}, {}, LoginInput>, res: Response) => 
   }
 };
 
-export const logout = (req: Request, res: Response) => {
+export const logout = (_req: Request, res: Response) => {
   res.clearCookie('token').status(200).json({ success: true, message: 'Logged out' });
 };
 

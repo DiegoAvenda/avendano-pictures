@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { User } from '../models/User';
+import { User, IUser } from '../models/User.js';
 
 export interface AuthRequest extends Request {
-  user?: User;
+  user?: IUser;
 }
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';

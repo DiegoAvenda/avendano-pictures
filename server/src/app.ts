@@ -2,8 +2,8 @@ import express, { Application, Request, Response, NextFunction } from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
 import morgan from "morgan"
-import authRoutes from "./routes/auth.routes"
-import videoRoutes from "./routes/video.routes"
+import authRoutes from "./routes/auth.routes.js"
+import videoRoutes from "./routes/video.routes.js"
 
 const app: Application = express()
 

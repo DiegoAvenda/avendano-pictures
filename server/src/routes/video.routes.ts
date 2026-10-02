@@ -1,14 +1,14 @@
 import { Router } from 'express';
-import { protect } from '../middlewares/auth.middleware';
-import { validate } from '../middlewares/validate.middleware';
-import { createVideoSchema, updateVideoSchema } from '../schemas/video.schema';
+import { protect } from '../middlewares/auth.middleware.js';
+import { validate } from '../middlewares/validate.middleware.js';
+import { createVideoSchema, updateVideoSchema } from '../schemas/video.schema.js';
 import {
   getFeed,
   getVideoById,
   createVideo,
   updateVideo,
   incrementViews,
-} from '../controllers/video.controller';
+} from '../controllers/video.controller.js';
 
 const router = Router();
 

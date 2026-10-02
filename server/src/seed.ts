@@ -4,7 +4,7 @@
 //   pnpm seed -- --force -> clears the collection and re-inserts the samples
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import { Video } from './models/Video';
+import { Video } from './models/Video.js';
 
 dotenv.config();
 

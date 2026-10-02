@@ -1,7 +1,7 @@
 // src/index.ts – Server bootstrap
 import dotenv from 'dotenv';
-import app from './app';
-import connectDB from './config/db';
+import app from './app.js';
+import connectDB from './config/db.js';
 
 dotenv.config();
 
@@ -13,8 +13,12 @@ if (!MONGO_URI) {
   process.exit(1);
 }
 
-connectDB(MONGO_URI).then(() => {
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+connectDB(MONGO_URI)
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
+    });
+  })
+  .catch(() => {
+    process.exit(1);
   });
-});
