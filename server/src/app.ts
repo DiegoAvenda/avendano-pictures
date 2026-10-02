@@ -1,0 +1,36 @@
+import express, { Application, Request, Response, NextFunction } from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import morgan from 'morgan';
+import authRoutes from './routes/auth.routes';
+import videoRoutes from './routes/video.routes';
+
+const app: Application = express();
+
+// CORS – allow credentials from same origin (client will be served on a different port)
+app.use(
+  cors({
+    origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173',
+    credentials: true,
+  })
+);
+
+app.use(express.json());
+app.use(cookieParser());
+app.use(morgan('dev'));
+
+// API base path
+app.use('/api/auth', authRoutes);
+app.use('/api/videos', videoRoutes);
+
+// Global error formatter (ensures { success, message, data? })
+app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+  console.error('Unhandled error:', err);
+  const status = err.status || 500;
+  res.status(status).json({
+    success: false,
+    message: err.message || 'Server error',
+  });
+});
+
+export default app;
